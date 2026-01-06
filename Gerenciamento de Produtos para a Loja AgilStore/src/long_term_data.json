@@ -1,0 +1,39 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Smartphone Galaxy S23",
+      "category": "Smartphone",
+      "quantity": 25,
+      "price": 4200.00
+    },
+    {
+      "id": "2",
+      "name": "Laptop Dell XPS 15",
+      "category": "Laptop",
+      "quantity": 10,
+      "price": 9800.00
+    },
+    {
+      "id": "3",
+      "name": "Fone de Ouvido Bluetooth Sony WH-1000XM4",
+      "category": "Acessório",
+      "quantity": 50,
+      "price": 1400.00
+    },
+    {
+      "id": "4",
+      "name": "Carregador Rápido USB-C 65W",
+      "category": "Acessório",
+      "quantity": 100,
+      "price": 150.00
+    },
+    {
+      "id": "5",
+      "name": "Cabo Lightning 1.8m Apple",
+      "category": "Acessório",
+      "quantity": 200,
+      "price": 80.00
+    }
+  ]
+}
