@@ -11,6 +11,7 @@ Ao digitar uma palavra-chave, as fotos são filtradas dinamicamente com base no 
 ## 📂 Estrutura de Pastas
 A estrutura do projeto segue uma organização modular, facilitando manutenção e escalabilidade:
 
+```text
 src/
 ├── assets/     # Imagens e ícones da aplicação
 │ └── icons/    # Icones
@@ -24,7 +25,7 @@ src/
 ├── App.jsx     # Componente raiz
 ├── main.jsx    # Ponto de entrada da aplicação
 └── index.css   # Estilos globais
-
+```
 ---
 
 ## 🛠️ Tecnologias

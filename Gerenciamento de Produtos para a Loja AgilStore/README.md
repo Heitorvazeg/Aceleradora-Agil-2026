@@ -50,7 +50,7 @@ Desenvolver um backend modular, organizado e escalável que permita:
 ├── package.json
 ├── tsconfig.json
 └── README.md
-
+```
 ---
 
 ## 🧱 Arquitetura
