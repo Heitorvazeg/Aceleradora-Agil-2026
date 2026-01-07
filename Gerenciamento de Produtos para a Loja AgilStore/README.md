@@ -37,6 +37,10 @@ Desenvolver um backend modular, organizado e escalável que permita:
 │   │
 │   ├── models/         # Tipagens e entidades
 │   │
+│   ├── shared/         # Estruturas compartilhadas da aplicação (Erros especificos)
+│   │
+│   ├── utils/          # Utilitarios da aplicação (gerador de id único)
+│   │
 │   ├── routes.ts       # Definição das rotas da API
 │   │
 │   ├── app.ts          # Configuração do Express (middlewares)
