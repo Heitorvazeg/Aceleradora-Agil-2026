@@ -112,7 +112,7 @@ O projeto segue uma arquitetura em **camadas**, separando responsabilidades e fa
 - npm
 
 ### Passos para execução
-
+```bash
 1. Clone o repositório:
 git clone https://github.com/Heitorvazeg/Aceleradora-Agil-2026.git
 
@@ -135,7 +135,7 @@ cd "./Gerenciamento de Produtos para a Loja AgilStore"
 npm run start-cli
 
 8. Navegue pela **CLI** e explore as possibilidade.
-
+```
 ---
 
 ## 🔮 Projeções Futuras

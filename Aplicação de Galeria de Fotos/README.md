@@ -62,7 +62,7 @@ npm install
 npm run dev
 
 # Após isso, acesse o navegador: http://localhost:5173
-
+```
 ## 🔮 Projeções Futuras
 
 - Integração com API pública de fotos (Unsplash, Pexels, etc.)
