@@ -2,23 +2,34 @@ import Photo from "./photo/photo";
 import { photos } from "./bodyPhotos";
 import { FilterContext } from "../context/context";
 import { useContext } from "react";
+import "./body.css";
 
 function Body() {
-    const [filter] = useContext(FilterContext);
+  const { filter } = useContext(FilterContext);
 
-    // Aplica filtro de fotos de acordo com o valor do "filter" do context
+  // Aplica filtro ás fotos de acordo com o valor digitado na bar
+  const filteredPhotos = photos.filter(photo =>
+    !filter || photo.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
-    return (
-        <section>
-            <div>
-                {photos.forEach((element) => {
-                    if (element.name.includes(filter)) {
-                        <Photo src={element.src} alt={element.alt} name={element.name}></Photo>
-                    }
-                })}
-            </div>
-        </section>
-    )
+  return (
+    <section>
+      <div>
+        {filteredPhotos.length === 0 ? (
+          <p>Nenhuma foto encontrada.</p>
+        ) : (
+          filteredPhotos.map(photo => (
+            <Photo
+              src={photo.src}
+              alt={photo.alt}
+              name={photo.name}
+              key={photo.id}
+            />
+          ))
+        )}
+      </div>
+    </section>
+  );
 }
 
 export default Body;

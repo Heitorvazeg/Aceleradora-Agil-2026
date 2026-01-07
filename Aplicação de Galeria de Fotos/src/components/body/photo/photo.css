@@ -1,0 +1,48 @@
+.photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.imagePhoto {
+  width: 100%;
+  max-width: 350px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.photo:hover .imagePhoto {
+  transform: scale(1.05);
+}
+
+.namePhoto {
+  font-size: 1.1rem;
+  text-align: center;
+  font-weight: 500;
+  margin: 0;
+  transition: transform 0.2s ease;
+}
+
+.photo:hover .namePhoto {
+  transform: scale(1.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .namePhoto {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .imagePhoto {
+    max-width: 280px;
+    height: 200px;
+  }
+}

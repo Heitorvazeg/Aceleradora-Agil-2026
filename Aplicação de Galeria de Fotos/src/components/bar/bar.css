@@ -1,0 +1,66 @@
+.bar {
+  width: 100%;
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.input {
+  height: 2.5rem;
+  width: 50%;
+  max-width: 500px;
+  min-width: 200px;
+  padding: 0 12px;
+  font-size: 1rem;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.botaoLupa {
+  height: 50px;
+  width: 50px;
+  min-width: 50px; /* evita esmagar no mobile */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 3px 5px rgb(146, 144, 144);
+}
+
+.botaoLupa:hover {
+  background-color: rgb(231, 229, 229);
+  cursor: pointer;
+}
+
+.botaoLupa:active {
+  background-color: rgb(197, 194, 194);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .input {
+    width: 70%;
+  }
+}
+
+@media (max-width: 480px) {
+  .bar {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .botaoLupa {
+    width: 45px;
+    height: 45px;
+  }
+}

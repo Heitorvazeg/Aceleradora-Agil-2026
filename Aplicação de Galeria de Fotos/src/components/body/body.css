@@ -1,0 +1,42 @@
+section {
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Grid */
+section > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* Mensagem quando nao houver fotos */
+section p {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  section {
+    padding: 1.5rem;
+  }
+
+  section > div {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 1rem;
+  }
+
+  section > div {
+    grid-template-columns: 1fr;
+  }
+}

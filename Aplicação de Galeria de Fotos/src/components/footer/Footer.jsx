@@ -1,7 +1,9 @@
+import "./footer.css";
+
 function Footer () {
     return (
-        <footer>
-            <h1>&Copy; 2026 Galeria de Fotos. Todos os direitos reservados.</h1>
+        <footer className="footer">
+            <h1 className="rights">&copy; 2026 Galeria de Fotos. Todos os direitos reservados.</h1>
         </footer>
     )
 }

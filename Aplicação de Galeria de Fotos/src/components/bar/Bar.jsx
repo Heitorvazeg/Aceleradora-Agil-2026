@@ -1,18 +1,16 @@
 import { useContext, useState } from "react";
 import { FilterContext } from "../context/context";
+import "./bar.css";
 
 function Bar () {
-    const [setFilter] = useContext(FilterContext);
-    const [value, setValue] = useState("");
+    const {filter, setFilter} = useContext(FilterContext);
 
     // Obs: Não faz sentido filtrar em tempo real e ainda assim usar a lupa.
-    // Optei por apenas utilizar a lupa, e filtrar ao clicar.
+    // Optei por filtrar em tempo real mas ainda assim com o botão
     return (
-        <div>
-            <input type="text" value={value} onChange={e => setValue(e.target.value)}/>
-            <button onClick={() => {
-                setFilter(value)
-            }}><i class="fa-solid fa-magnifying-glass"></i></button>
+        <div className="bar">
+            <input type="text" className="input" onChange={e => setFilter(e.target.value)}></input>
+            <button className="botaoLupa"><i className="fa-solid fa-magnifying-glass"></i></button>
         </div>
     )
 }

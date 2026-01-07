@@ -1,0 +1,24 @@
+.header {
+  width: 100%;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.titulo {
+  font-size: 4rem;
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .titulo {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .titulo {
+    font-size: 2rem;
+  }
+}

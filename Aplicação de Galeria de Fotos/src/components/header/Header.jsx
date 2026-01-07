@@ -1,7 +1,9 @@
+import "./header.css";
+
 function Header() {
     return (
-        <header>
-            <h1>Galeria de Fotos</h1>
+        <header className="header">
+            <h1 className="titulo">Galeria de Fotos</h1>
         </header>
     )
 }

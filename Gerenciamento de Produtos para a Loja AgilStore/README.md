@@ -18,14 +18,49 @@ Desenvolver um backend modular, organizado e escalável que permita:
 
 ---
 
+## 📁 Estrutura do Projeto
+
+```text
+.
+├── src/
+│   ├── cli/                # Interface de linha de comando (CLI)
+│   │   ├── index.ts        # Entry point da CLI
+│   │   ├── api.ts          # Chamadas na API de gerenciamento
+│   │   ├── input.ts        # Funções para obter input na CLI
+│   │   └── validators.ts   # Validadores de entrada
+│   │
+│   ├── controller/     # Controllers (camada HTTP)
+│   │
+│   ├── service/        # Regras de negócio
+│   │
+│   ├── repository/     # Acesso a dados (arquivo, memória, etc.)
+│   │
+│   ├── models/         # Tipagens e entidades
+│   │
+│   ├── routes.ts       # Definição das rotas da API
+│   │
+│   ├── app.ts          # Configuração do Express (middlewares)
+│   │
+│   └── server.ts       # Entry point do servidor HTTP
+│
+├── dist/               # Código compilado (.gitignore)
+│
+├── node_modules/
+│
+├── package.json
+├── tsconfig.json
+└── README.md
+
+---
+
 ## 🧱 Arquitetura
 
 O projeto segue uma arquitetura em **camadas**, separando responsabilidades e facilitando manutenção e evolução do código.
 
 ### Camadas da Aplicação
 
-- **CLI**
-  Responsável pela interação com o sistema Backend através de requisições HTTP com Fetch.
+- **CLI**  
+  Responsável pela interação com a API por meio de chamadas HTTP com Fetch.
 
 - **Controller**  
   Responsável pelo tratamento inicial das requisições e pela comunicação com a camada de serviço.
@@ -55,8 +90,8 @@ O projeto segue uma arquitetura em **camadas**, separando responsabilidades e fa
   Retorna os produtos cadastrados no sistema  
   Suporte a Query Params de busca filtradas
 
-- **HEAD /api/v1/products/:id**
-  Retorna se o produto existe no sistema.
+- **HEAD /api/v1/products/:id**  
+  Retorna se determinado produto existe dentro do sistema
 
 - **POST /api/v1/products**  
   Adiciona um novo produto ao sistema  
@@ -82,7 +117,7 @@ O projeto segue uma arquitetura em **camadas**, separando responsabilidades e fa
 git clone https://github.com/Heitorvazeg/Aceleradora-Agil-2026.git
 
 2. Acesse o diretório do projeto:
-cd Aceleradora-Agil-2026
+cd "./Aceleradora-Agil-2026/Gerenciamento de Produtos para a Loja AgilStore"
 
 3. Instale as dependências:
 npm install
