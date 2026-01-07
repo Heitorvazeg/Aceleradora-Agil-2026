@@ -1,7 +1,7 @@
-import { API } from "./api.js";
+import { addProduct, listProducts, deleteProductCli, patchProductCli, searchProduct } from "./api.js";
 import { question, close } from "./input.js";
-import { isNotEmpty, isValidNumber } from "./validators.js";
 
+// Menu de opções
 async function menu() {
   console.log("\n=== GERENCIAMENTO DE PRODUTOS ===");
   console.log("1 - Adicionar produto");
@@ -21,25 +21,25 @@ async function main() {
 
       switch (option) {
         case "1":
-          await adicionarProduto();
+          await addProduct();
           break;
         case "2":
-          await listarProdutos();
+          await listProducts();
           break;
         case "3":
-          await atualizarProduto();
+          await patchProductCli();
           break;
         case "4":
-          await excluirProduto();
+          await deleteProductCli();
           break;
         case "5":
-          await buscarProduto();
+          await searchProduct();
           break;
         case "0":
           close();
           process.exit(0);
         default:
-          console.log("❌ Opção inválida.");
+          console.log("Opção inválida.");
       }
     } catch (err: any) {
       console.error("Erro:", err.response?.data || err.message);

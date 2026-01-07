@@ -1,32 +1,78 @@
 import type { Request, Response } from "express";
-import { listProductsService } from "../service/product.js";
+import { deleteProductsService, existsProductByIDService, listProductsService, patchProductsService, saveProductsService } from "../service/productService.js";
 
+// Controler da rota GET /api/v1/products
+// Trata dados de filtragem por Query Params
 export async function listProductsController(req: Request, res:Response): Promise<void> {
     try {
         const id = req.query.id;
-        const category = req.query.category;
-        const quantity = req.query.quantity;
-        const price = req.query.price;
+        const name = req.query.name;
 
-        const listOfProducts = await listProductsService(id as string,
-            category as string, Number(quantity), Number(price));
+        const listOfProducts = await listProductsService(id as string, name as string);
 
         res.status(200).json(listOfProducts);
     }
-    catch (error) {
+    catch (error: any) {
         console.log(error);
         res.status(500).json({ message: "Erro ao buscar produtos!"});
     }
 }
 
+// Controler para adicionar produtos
 export async function saveProductsController(req: Request, res:Response) {
-    
+    try {
+        const bodyReq = req.body;
+
+        await saveProductsService(bodyReq);
+
+        res.status(201).json({message: "Produto criado com sucesso!"});
+    }
+    catch (error: any) {
+        res.status(500).json({èrror: error.message});
+    }
 }
 
+// Controller de atualizar produtos
 export async function patchProductController(req: Request, res:Response) {
-    
+    try {
+        const productUpdate = req.body;
+        const id = req.params.id;
+
+        await patchProductsService(id as string, productUpdate);
+
+        res.status(201).json({message: "Produto salvo com sucesso!"});
+    }
+    catch (error: any) {
+        res.status(500).json({message: error.message});
+    }
 }
 
+// Controller para deletar produtos
 export async function deleteProductController(req: Request, res:Response) {
-    
+    try {
+        const id = req.params.id;
+
+        await deleteProductsService(id as string);
+
+        res.status(200).json({message: "Produto deletado com sucesso!"});
+    }
+    catch (error: any) {
+        res.status(500).json({message: error.message});
+    }
+}
+
+// Handle para ver se existe o produto
+export async function existsProductByID(req: Request, res: Response) {
+    try {
+        const id = req.params.id;
+        const ok: boolean = await existsProductByIDService(id as string);
+
+        if (ok) {
+            res.status(200);
+        }
+    }
+    catch (error: any) {
+        console.log(error);
+        res.status(500).json({message: error.message});
+    }
 }

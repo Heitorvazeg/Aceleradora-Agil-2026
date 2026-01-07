@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "node ./dist/server.js"
+    "start": "concurrently \"node ./dist/server.js\" \"node ./dist/cli/index.js\"",
+    "start-server": "node ./dist/server.js",
+    "start-cli": "node ./dist/cli/index.js"
   },
   "keywords": [],
   "type": "module",

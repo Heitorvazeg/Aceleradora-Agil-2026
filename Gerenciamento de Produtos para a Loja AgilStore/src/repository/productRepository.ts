@@ -3,7 +3,7 @@ import type { Product, ProductData }from "../models/product.js";
 import { RepositoryError } from "../shared/errors.js";
 
 // Caminho para o arquivo de persintência em JSON.
-const dataFilePath = "../long_term_data.json"
+export const dataFilePath = "../long_term_data.json"
 
 // Pega os produtos do arquivo long_term_data.json
 export async function listProducts(): Promise<Product[]> {
@@ -18,11 +18,11 @@ export async function listProducts(): Promise<Product[]> {
 };
 
 // Salva novos produtos no arquivo long_term_data.json
-export async function saveProducts(products: Product[]) {
+export async function saveProducts(product: Product) {
     try {
         const data = await readFile(dataFilePath, 'utf-8');
         const json: ProductData = JSON.parse(data);
-        json.products.push(...products);
+        json.products.push(product);
 
         await writeFile(dataFilePath, JSON.stringify(json));
     }
@@ -78,6 +78,23 @@ export async function idExists(id: string): Promise<boolean> {
 
         if (index == -1) return false;
         else return true;
+    }
+    catch (error) {
+        throw new RepositoryError();
+    }
+}
+
+export async function findByName(name: string): Promise<boolean> {
+    try {
+        const data = await readFile(dataFilePath, 'utf-8');
+        const json: ProductData = JSON.parse(data);
+
+        const found = json.products.find(p => p.Name = name);
+
+        if (found) return true;
+        else {
+            return false;
+        }
     }
     catch (error) {
         throw new RepositoryError();
