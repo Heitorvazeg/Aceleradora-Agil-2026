@@ -24,6 +24,9 @@ O projeto segue uma arquitetura em **camadas**, separando responsabilidades e fa
 
 ### Camadas da Aplicação
 
+- **CLI**
+  Responsável pela interação com o sistema Backend através de requisições HTTP com Fetch.
+
 - **Controller**  
   Responsável pelo tratamento inicial das requisições e pela comunicação com a camada de serviço.
 
@@ -50,15 +53,18 @@ O projeto segue uma arquitetura em **camadas**, separando responsabilidades e fa
 
 - **GET /api/v1/products**  
   Retorna os produtos cadastrados no sistema  
-  - Suporte a filtros por categoria, preço e ID específico  
+  Suporte a Query Params de busca filtradas
+
+- **HEAD /api/v1/products/:id**
+  Retorna se o produto existe no sistema.
 
 - **POST /api/v1/products**  
   Adiciona um novo produto ao sistema  
 
-- **PATCH /api/v1/products**  
+- **PATCH /api/v1/products/:id**  
   Atualiza informações de um produto já cadastrado  
 
-- **DELETE /api/v1/products**  
+- **DELETE /api/v1/products/:id**  
   Remove um produto obsoleto do sistema  
 
 ---
@@ -84,19 +90,26 @@ npm install
 4. Gere o build do projeto:
 npm run build
 
-5. Inicie a aplicação:
-npm run start
+5. Inicie o servidor:
+npm run start-server
 
-6. Interaja com o sistema por meio da **CLI**
+6. Em outro terminal, navegue para a pasta do projeto:
+cd "./Gerenciamento de Produtos para a Loja AgilStore"
+
+7. Inicie a interface **CLI**:
+npm run start-cli
+
+8. Navegue pela **CLI** e explore as possibilidade.
 
 ---
 
 ## 🔮 Projeções Futuras
 
 - Integração com banco de dados relacional ou NoSQL
-- Criação de uma interface web para interação com o sistema  
+- Criação de uma interface web para interação com o sistema
+- Melhoria em perfomance e Segurança do fluxo
 - Autenticação e controle de acesso  
-- Testes automatizados  
+- Testes automatizados
 
 ---
 
