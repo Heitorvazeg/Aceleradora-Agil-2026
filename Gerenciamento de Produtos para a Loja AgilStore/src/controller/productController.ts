@@ -8,7 +8,7 @@ export async function listProductsController(req: Request, res:Response): Promis
         const id = req.query.id;
         const name = req.query.name;
 
-        const listOfProducts = await listProductsService(id as string, name as string);
+        const listOfProducts = await listProductsService(Number(id), name as string);
 
         res.status(200).json(listOfProducts);
     }
@@ -38,7 +38,7 @@ export async function patchProductController(req: Request, res:Response) {
         const productUpdate = req.body;
         const id = req.params.id;
 
-        await patchProductsService(id as string, productUpdate);
+        await patchProductsService(Number(id), productUpdate);
 
         res.status(201).json({message: "Produto salvo com sucesso!"});
     }
@@ -52,7 +52,7 @@ export async function deleteProductController(req: Request, res:Response) {
     try {
         const id = req.params.id;
 
-        await deleteProductsService(id as string);
+        await deleteProductsService(Number(id));
 
         res.status(200).json({message: "Produto deletado com sucesso!"});
     }
@@ -65,11 +65,14 @@ export async function deleteProductController(req: Request, res:Response) {
 export async function existsProductByID(req: Request, res: Response) {
     try {
         const id = req.params.id;
-        const ok: boolean = await existsProductByIDService(id as string);
+        const ok: boolean = await existsProductByIDService(id);
 
         if (ok) {
-            res.status(200);
+            res.sendStatus(200);
+            return;
         }
+
+        res.sendStatus(404);
     }
     catch (error: any) {
         console.log(error);

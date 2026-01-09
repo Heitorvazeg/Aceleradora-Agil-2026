@@ -49,6 +49,8 @@ Desenvolver um backend modular, organizado e escalável que permita:
 │
 ├── dist/               # Código compilado (.gitignore)
 │
+├── data/               # Arquivo long_term_data.json
+│
 ├── node_modules/
 │
 ├── package.json

@@ -47,28 +47,28 @@ export async function listProducts() {
   }
   );
 
-  const products = await response.json();
-
-  if (!products.length) {
-    console.log("Nenhum produto encontrado.");
+  if (!response.ok) {
+    console.log("Produto não encontrado!");
     return;
   }
+
+  const products = await response.json();
 
   // Printa produtos em tabela.
   console.table(
     products.map((p: any) => ({
-      ID: p.id,
-      Nome: p.name,
-      Categoria: p.category,
-      Quantidade: p.quantity,
-      Preço: p.price,
+      "ID": p.id,
+      "Nome": p.name,
+      "Categoria": p.category,
+      "Quantidade": p.quantity,
+      "Preço": p.price,
     }))
   );
 }
 
 // Atualizar produto existente
 export async function patchProductCli() {
-  const id = await question("ID do produto: ");
+  const id = (await question("ID do produto: ")).trim();
 
   const check = await fetch(`${API}/products/${id}`, {method: "HEAD"});
 
@@ -77,17 +77,26 @@ export async function patchProductCli() {
     return;
   }
 
+  const params = new URLSearchParams();
+  params.append("id", id);
+
   // Fetch no produto salvo com filtro de id
-  const current = await fetch(`${API}/products/${id}`);
-  const productSaved: Product = await current.json();
+  const responseGet = await fetch(`${API}/products/?${params.toString()}`);
+
+  if (!responseGet.ok) {
+    console.log("Erro ao buscar produto!");
+    return;
+  }
+
+  const productSaved = (await responseGet.json())[0];
 
   // Novos campos
-  const name = await question(`Nome (${productSaved.Name}): `);
-  const category = await question(`Categoria (${productSaved.Category}): `);
+  const name = await question(`Nome (${productSaved.name}): `);
+  const category = await question(`Categoria (${productSaved.category}): `);
   const quantityInput = await question(
-    `Quantidade (${productSaved.Quantity}): `
+    `Quantidade (${productSaved.quantity}): `
   );
-  const priceInput = await question(`Preço (${productSaved.Price}): `);
+  const priceInput = await question(`Preço (${productSaved.price}): `);
 
   const update: any = {};
 
@@ -154,10 +163,12 @@ export async function searchProduct() {
   const params = new URLSearchParams();
 
   if (Number(term) == 1) {
-    params.append("id", term);
+    const id = await question("Qual o id do produto? ");
+    params.append("id", id);
 
   } else if (Number(term) == 2) {
-    params.append("name", term);
+    const name = await question("Qual o nome do produto? ");
+    params.append("name", name);
 
   } else {
     console.log("Opção invalida!");
@@ -168,18 +179,13 @@ export async function searchProduct() {
     `${API}/products/?${params.toString()}`
   );
 
-  const results = await response.json();
-
-  if (!results.length) {
+  if (!response.ok) {
     console.log("Nenhum produto encontrado!");
     return;
   }
 
+  const results = await response.json();
+
   // Printa o item buscado
-    console.table(results, [
-        "id",
-        "Nome",
-        "Categoria",
-        "Quantidade"
-    ]);
+ console.table(results);
 }
